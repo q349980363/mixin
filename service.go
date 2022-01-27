@@ -27,7 +27,6 @@ func init_service() {
 	r.Use(Cors())
 	m = melody.New()
 	m.Upgrader.CheckOrigin = func(r *http.Request) bool { return true }
-
 	init_service_bind()
 	init_service_bind1()
 }
@@ -38,7 +37,6 @@ var authPath = []string{
 }
 
 func init_service_bind() {
-
 	r.POST("/empty", http_empty)
 	r.POST("/login", http_login)
 	r.POST("/register", http_register)
@@ -88,9 +86,8 @@ func init_service_bind() {
 	})
 	r.NoRoute(func(c *gin.Context) {
 		path := c.Request.URL.Path
-		path = strings.ReplaceAll(path, "/", "\\")
 		_log(c.Request.URL.Path)
-		c.File(".\\webroot\\" + path)
+		c.File("./webroot/" + path)
 	})
 	m.HandleConnect(func(s *melody.Session) {
 		token := s.Request.URL.Query()["toKen"][0]
@@ -122,7 +119,6 @@ func init_service_bind() {
 		userInfo := sessionGetUserInfo(s)
 		HandleMessage(s, b, string(b), userInfo)
 	})
-
 }
 func sessionGetS(name string) []*melody.Session {
 	var old []*melody.Session
