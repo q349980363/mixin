@@ -42,7 +42,6 @@ func sendGlobalChat(chat *GroupChat) {
 		"data": chat,
 	})
 	m.Broadcast(json)
-
 }
 
 //添加用户申请

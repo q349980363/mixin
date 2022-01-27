@@ -43,12 +43,10 @@ func init_service_bind() {
 	r.POST("/login", http_login)
 	r.POST("/register", http_register)
 	r.GET("/ws", func(c *gin.Context) {
-
 		m.HandleRequest(c.Writer, c.Request)
 		c.ClientIP()
 	})
 	r.Use(func(c *gin.Context) {
-
 		for _, url := range authPath {
 			if strings.Contains(c.Request.URL.Path, url) {
 				var userInfo UserInfo
