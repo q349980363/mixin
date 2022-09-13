@@ -66,6 +66,7 @@ func addFriends(userName string, target string) error {
 		Operation: "ok_no",
 	})
 	return nil
+	
 }
 
 //添加用户申请
